@@ -662,7 +662,7 @@ export default function Home() {
       ================================================================= */}
       <section
         id="analysis"
-        className="relative border-y border-white/[0.06] bg-[#090E15] py-24 sm:py-28"
+        className="relative border-y border-white/[0.06] bg-[#090E15] py-18 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
@@ -838,7 +838,7 @@ export default function Home() {
       ================================================================= */}
       <section
         id="how-it-works"
-        className="border-y border-white/[0.06] bg-[#090E15] py-24 sm:py-28"
+        className="border-y border-white/[0.06] bg-[#090E15] py-18 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
@@ -1075,7 +1075,7 @@ export default function Home() {
       ================================================================= */}
       <section
         id="education"
-        className="border-y border-white/[0.06] bg-[#090E15] py-24 sm:py-28"
+        className="border-y border-white/[0.06] bg-[#090E15] py-18 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
@@ -1210,7 +1210,7 @@ export default function Home() {
       ================================================================= */}
       <section
         id="contact"
-        className="relative overflow-hidden border-t border-white/[0.06] bg-[#090E15] py-24 sm:py-28"
+        className="relative overflow-hidden border-t border-white/[0.06] bg-[#090E15] py-18 sm:py-20"
       >
         <div
           aria-hidden="true"

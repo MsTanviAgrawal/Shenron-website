@@ -1518,8 +1518,8 @@ export default function Navbar() {
                     w-10
                     transition-transform
                     duration-500
-                    group-hover:rotate-6
-                    group-hover:scale-110
+                    group-hover:rotate-4
+                    group-hover:scale-100
                   "
                 />
               </span>
