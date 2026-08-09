@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,15 +11,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shenron-next.vercel.app"),
+  metadataBase: new URL(
+    "https://shenron-next.vercel.app",
+  ),
 
   title: {
-    default: "Shenron | Market Intelligence for Modern Traders",
+    default:
+      "Shenron | Market Intelligence for Modern Traders",
     template: "%s | Shenron",
   },
 
   description:
-    "Shenron is a modern market intelligence platform for forex, gold, crypto and indices, combining market context, technical analysis, risk awareness and trading education.",
+    "Shenron is a modern market intelligence platform for forex, gold, crypto and global indices, combining market context, technical analysis, risk awareness and trading education.",
 
   keywords: [
     "forex trading",
@@ -52,7 +53,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Shenron",
-    title: "Shenron | Market Intelligence for Modern Traders",
+    title:
+      "Shenron | Market Intelligence for Modern Traders",
     description:
       "Explore market context, technical analysis, risk insights and trading education for forex, gold, crypto and global indices.",
   },
@@ -84,11 +86,9 @@ export default function RootLayout({
           antialiased
         `}
       >
-        <Navbar />
-
-        <main>{children}</main>
-
-        <Footer />
+        <SiteChrome>
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );
