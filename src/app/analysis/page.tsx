@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "risk analysis",
   ],
   openGraph: {
-    title: "Market Analysis | Shenron",
+    title: "Market Analysis | Orvix",
     description:
       "Structured market intelligence covering forex, gold, crypto and global indices.",
     type: "website",
@@ -205,7 +205,7 @@ export default function AnalysisPage() {
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(98,230,255,0.9)]" />
 
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-200/80">
-                Shenron Market Intelligence
+                Orvix Market Intelligence
               </span>
             </div>
 
@@ -465,7 +465,7 @@ export default function AnalysisPage() {
 
               <p className="mt-5 text-sm leading-7 text-slate-500">
                 Good analysis is more than identifying whether price is going
-                up or down. Shenron organizes market information into
+                up or down. Orvix organizes market information into
                 structured layers so traders can understand the conditions
                 surrounding a potential setup.
               </p>
@@ -638,7 +638,7 @@ export default function AnalysisPage() {
 
               <p className="mt-5 text-sm leading-7 text-slate-500">
                 A structured workflow makes analysis easier to review,
-                communicate and improve. Shenron's framework moves from broad
+                communicate and improve. Orvix's framework moves from broad
                 context toward a clearly defined risk scenario.
               </p>
             </div>

@@ -198,7 +198,7 @@ export function DashboardFooterNote() {
   return (
     <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.05] pt-6 text-[9px] leading-5 text-slate-700 sm:flex-row sm:items-center sm:justify-between">
       <p>
-        Shenron dashboard • Frontend demonstration
+        Orvix dashboard • Frontend demonstration
         with illustrative market data.
       </p>
 

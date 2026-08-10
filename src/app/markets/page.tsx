@@ -17,7 +17,7 @@
 // export const metadata: Metadata = {
 //   title: "Markets | Forex, Gold, Crypto & Global Indices",
 //   description:
-//     "Explore Shenron market intelligence across forex, gold, crypto and global indices with structured analysis, market context and trading education.",
+//     "Explore Orvix market intelligence across forex, gold, crypto and global indices with structured analysis, market context and trading education.",
 //   keywords: [
 //     "markets",
 //     "forex market",
@@ -220,7 +220,7 @@
 //               </h2>
 
 //               <p className="mt-5 max-w-lg text-sm leading-7 text-slate-500">
-//                 Shenron organizes market research around the information
+//                 Orvix organizes market research around the information
 //                 traders commonly need to understand before making a decision.
 //               </p>
 //             </div>
@@ -296,7 +296,7 @@
 //             </p>
 
 //             <p>
-//               Shenron's market intelligence experience is designed to help
+//               Orvix's market intelligence experience is designed to help
 //               traders organize that information. From forex market analysis
 //               and XAU/USD price structure to Bitcoin market trends and global
 //               index analysis, each market page provides a focused framework for
@@ -326,7 +326,7 @@
 //           </h2>
 
 //           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-500">
-//             Open the Shenron dashboard and bring market context, watchlists,
+//             Open the Orvix dashboard and bring market context, watchlists,
 //             analysis and risk awareness into one workspace.
 //           </p>
 
@@ -348,7 +348,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Markets | Shenron Market Intelligence",
+  title: "Markets | Orvix Market Intelligence",
   description:
     "Explore forex, gold, crypto and global indices with structured market intelligence, trends and risk-aware analysis.",
 };

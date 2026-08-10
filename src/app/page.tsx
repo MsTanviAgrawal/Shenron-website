@@ -108,29 +108,29 @@ const educationItems = [
 
 const faqs = [
   {
-    question: "What is Shenron?",
+    question: "What is Orvix?",
     answer:
-      "Shenron is a market intelligence and trading education platform designed to help users understand forex, gold, crypto and global indices through structured market context and analysis.",
+      "Orvix is a market intelligence and trading education platform designed to help users understand forex, gold, crypto and global indices through structured market context and analysis.",
   },
   {
-    question: "What markets does Shenron cover?",
+    question: "What markets does Orvix cover?",
     answer:
-      "The Shenron platform focuses on forex, gold and metals, cryptocurrencies and major global indices.",
+      "The Orvix platform focuses on forex, gold and metals, cryptocurrencies and major global indices.",
   },
   {
-    question: "Is Shenron a trading broker?",
+    question: "Is Orvix a trading broker?",
     answer:
-      "No. Shenron is designed as a market intelligence and educational experience. It does not act as a broker or execute trades.",
+      "No. Orvix is designed as a market intelligence and educational experience. It does not act as a broker or execute trades.",
   },
   {
-    question: "Does Shenron guarantee trading profits?",
+    question: "Does Orvix guarantee trading profits?",
     answer:
       "No. Market analysis and educational information cannot guarantee trading results. Financial markets involve significant risk, and users should make decisions based on their own circumstances and risk tolerance.",
   },
   {
-    question: "Can beginners use Shenron?",
+    question: "Can beginners use Orvix?",
     answer:
-      "Yes. Shenron is designed to present market concepts in a structured way, while the education section provides introductory material for people learning about forex, technical analysis and risk management.",
+      "Yes. Orvix is designed to present market concepts in a structured way, while the education section provides introductory material for people learning about forex, technical analysis and risk management.",
   },
 ];
 
@@ -362,6 +362,79 @@ export default function Home() {
           50% { opacity: 0.72; }
         }
 
+        /* Dark Quantum Finance gradient field: slow, layered motion keeps the
+           hero alive without competing with the content or dashboard. */
+        @keyframes heroGradientSweep {
+          0%, 100% {
+            transform: translate3d(-10%, -4%, 0) rotate(-8deg) scale(1);
+          }
+          50% {
+            transform: translate3d(9%, 5%, 0) rotate(7deg) scale(1.12);
+          }
+        }
+
+        @keyframes heroGradientSweepReverse {
+          0%, 100% {
+            transform: translate3d(8%, 4%, 0) rotate(10deg) scale(1.08);
+          }
+          50% {
+            transform: translate3d(-10%, -5%, 0) rotate(-6deg) scale(0.98);
+          }
+        }
+
+        @keyframes heroGradientPulse {
+          0%, 100% {
+            opacity: 0.18;
+            transform: scale(0.94);
+          }
+          50% {
+            opacity: 0.42;
+            transform: scale(1.06);
+          }
+        }
+
+        @keyframes marketTickerScroll {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            /* The second identical ticker set begins exactly where the first
+               set ends, so -50% creates a seamless right-to-left loop. */
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        .hero-gradient-sweep {
+          animation: heroGradientSweep 18s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        .hero-gradient-sweep-reverse {
+          animation: heroGradientSweepReverse 23s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        .hero-gradient-pulse {
+          animation: heroGradientPulse 8s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        .market-ticker-track {
+          width: max-content;
+          min-width: max-content;
+          animation: marketTickerScroll 28s linear infinite;
+          animation-timing-function: linear;
+          will-change: transform;
+          transform: translate3d(0, 0, 0);
+        }
+
+        /* Pause at the exact position under the pointer. */
+        .market-ticker:hover .market-ticker-track,
+        .market-ticker:focus-within .market-ticker-track {
+          animation-play-state: paused;
+        }
+
         .hero-ambient-grid {
           animation: heroGridFlow 18s linear infinite;
         }
@@ -410,7 +483,8 @@ export default function Home() {
           .button-particle-three, .button-particle-four, .hero-ambient-grid,
           .hero-aurora-one, .hero-aurora-two, .hero-orbit-one, .hero-orbit-two,
           .hero-orbit-three, .hero-bg-particle, .hero-data-pulse, .hero-signal,
-          .hero-star { animation: none !important; }
+          .hero-star, .hero-gradient-sweep, .hero-gradient-sweep-reverse,
+          .hero-gradient-pulse, .market-ticker-track { animation: none !important; }
         }
       `}</style>
       {/* ================================================================
@@ -426,6 +500,12 @@ export default function Home() {
           <div className="hero-aurora-one absolute left-[4%] top-[-18%] h-[72%] w-[58%] rounded-full bg-cyan-400/[0.07] blur-[110px]" />
           <div className="hero-aurora-two absolute right-[-10%] top-[18%] h-[68%] w-[55%] rounded-full bg-violet-500/[0.065] blur-[120px]" />
           <div className="hero-aurora-one absolute bottom-[-30%] left-[28%] h-[55%] w-[45%] rounded-full bg-cyan-300/[0.035] blur-[120px]" />
+
+          {/* Slow quantum-gradient ribbons: intentionally soft and oversized so
+              the motion reads as atmosphere rather than a foreground effect. */}
+          <div className="hero-gradient-sweep absolute left-[-18%] top-[4%] h-[72%] w-[68%] rounded-full bg-[conic-gradient(from_210deg_at_50%_50%,rgba(34,211,238,0)_0deg,rgba(34,211,238,0.13)_72deg,rgba(139,124,255,0.12)_148deg,rgba(34,211,238,0)_240deg,rgba(34,211,238,0)_360deg)] blur-[70px] opacity-70" />
+          <div className="hero-gradient-sweep-reverse absolute right-[-20%] top-[14%] h-[76%] w-[72%] rounded-full bg-[conic-gradient(from_30deg_at_50%_50%,rgba(139,124,255,0)_0deg,rgba(139,124,255,0.12)_82deg,rgba(34,211,238,0.10)_165deg,rgba(139,124,255,0)_252deg,rgba(139,124,255,0)_360deg)] blur-[82px] opacity-65" />
+          <div className="hero-gradient-pulse absolute left-[42%] top-[25%] h-[48%] w-[32%] rounded-full bg-cyan-300/[0.045] blur-[100px]" />
 
           {/* Moving technical grid */}
           <div
@@ -595,7 +675,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-7 max-w-xl text-base leading-8 text-slate-400 sm:text-lg">
-                Shenron brings market intelligence, technical analysis, risk
+                Orvix brings market intelligence, technical analysis, risk
                 awareness and trading education into one focused workspace for
                 modern traders.
               </p>
@@ -741,7 +821,7 @@ export default function Home() {
                   </div>
 
                   <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-600">
-                    Shenron Intelligence
+                    Orvix Intelligence
                   </span>
                 </div>
 
@@ -1019,42 +1099,83 @@ export default function Home() {
       {/* ================================================================
           MARKET TICKER
       ================================================================= */}
-      <div className="border-y border-white/[0.06] bg-[#090E15]">
-        <div className="mx-auto flex max-w-7xl overflow-x-auto px-4 sm:px-6 lg:px-8">
-          {[
-            ["XAU/USD", "2,438.21", "+1.82%"],
-            ["EUR/USD", "1.1742", "+0.31%"],
-            ["BTC/USD", "118,240", "+2.18%"],
-            ["NASDAQ", "21,482", "+0.72%"],
-          ].map(([symbol, price, change]) => (
-            <div
-              key={symbol}
-              className="
-                flex
-                min-w-[180px]
-                flex-1
-                items-center
-                justify-between
-                border-r
-                border-white/[0.05]
-                px-5
-                py-4
-                first:border-l
-              "
-            >
-              <span className="text-xs font-medium text-slate-500">
-                {symbol}
-              </span>
+      <div
+        className="market-ticker border-y border-white/[0.06] bg-[#090E15]"
+        aria-label="Market ticker"
+      >
+        <div className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
+          <div className="market-ticker-track flex min-w-max">
 
-              <span className="text-xs font-semibold text-slate-300">
-                {price}
-              </span>
+            {[
+              ["XAU/USD", "2,438.21", "+1.82%"],
+              ["EUR/USD", "1.1742", "+0.31%"],
+              ["BTC/USD", "118,240", "+2.18%"],
+              ["NASDAQ", "21,482", "+0.72%"],
+            ].map(([symbol, price, change]) => (
+              <div
+                key={`ticker-a-${symbol}`}
+                className="
+                  flex
+                  w-[clamp(180px,25vw,320px)]
+                  shrink-0
+                  items-center
+                  justify-between
+                  border-r
+                  border-white/[0.05]
+                  px-5
+                  py-4
+                  first:border-l
+                "
+              >
+                <span className="text-xs font-medium text-slate-500">
+                  {symbol}
+                </span>
 
-              <span className="text-[10px] font-semibold text-emerald-400">
-                {change}
-              </span>
-            </div>
-          ))}
+                <span className="text-xs font-semibold text-slate-300">
+                  {price}
+                </span>
+
+                <span className="text-[10px] font-semibold text-emerald-400">
+                  {change}
+                </span>
+              </div>
+            ))}
+
+            {[
+              ["XAU/USD", "2,438.21", "+1.82%"],
+              ["EUR/USD", "1.1742", "+0.31%"],
+              ["BTC/USD", "118,240", "+2.18%"],
+              ["NASDAQ", "21,482", "+0.72%"],
+            ].map(([symbol, price, change]) => (
+              <div
+                key={`ticker-b-${symbol}`}
+                aria-hidden="true"
+                className="
+                  flex
+                  w-[clamp(180px,25vw,320px)]
+                  shrink-0
+                  items-center
+                  justify-between
+                  border-r
+                  border-white/[0.05]
+                  px-5
+                  py-4
+                "
+              >
+                <span className="text-xs font-medium text-slate-500">
+                  {symbol}
+                </span>
+
+                <span className="text-xs font-semibold text-slate-300">
+                  {price}
+                </span>
+
+                <span className="text-[10px] font-semibold text-emerald-400">
+                  {change}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -1185,7 +1306,7 @@ export default function Home() {
 
               <p className="mt-5 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
                 Trading decisions become clearer when price, momentum,
-                volatility and risk are viewed together. Shenron organizes
+                volatility and risk are viewed together. Orvix organizes
                 these concepts into a focused market intelligence experience.
               </p>
 
@@ -1266,14 +1387,14 @@ export default function Home() {
       </section>
 
       {/* ================================================================
-          WHY SHENRON / ABOUT
+          WHY Orvix / ABOUT
       ================================================================= */}
       <section id="about" className="relative py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-300">
-                Why Shenron
+                Why Orvix
               </span>
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -1286,7 +1407,7 @@ export default function Home() {
               <p className="mt-5 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
                 Markets move quickly. The challenge is not finding more
                 information. It is understanding which information matters.
-                Shenron is designed around clarity, context and disciplined
+                Orvix is designed around clarity, context and disciplined
                 market analysis.
               </p>
             </div>
@@ -1426,7 +1547,7 @@ export default function Home() {
               <div className="flex border-b border-white/[0.07]">
                 <div className="hidden w-48 border-r border-white/[0.07] p-5 sm:block">
                   <div className="text-sm font-semibold tracking-[0.18em] text-white">
-                    SHENRON
+                    Orvix
                   </div>
 
                   <div className="mt-7 space-y-2">
@@ -1606,7 +1727,7 @@ export default function Home() {
                 href="#faq"
                 className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300"
               >
-                Learn more about Shenron
+                Learn more about Orvix
 
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -1660,7 +1781,7 @@ export default function Home() {
             </h2>
 
             <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-slate-500">
-              Learn more about Shenron, its market intelligence approach and
+              Learn more about Orvix, its market intelligence approach and
               how the platform is designed to be used.
             </p>
           </div>
@@ -1828,7 +1949,7 @@ export default function Home() {
               </h2>
 
               <p className="mt-2 text-xs leading-6 text-slate-600">
-                Shenron is currently presented as a frontend product
+                Orvix is currently presented as a frontend product
                 experience. No user account, personal data database or
                 backend service is connected in this frontend-only version.
               </p>

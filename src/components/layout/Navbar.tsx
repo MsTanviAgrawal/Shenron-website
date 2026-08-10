@@ -330,7 +330,7 @@
 //             <Link
 //               href="/"
 //               onClick={closeNavigation}
-//               aria-label="Shenron home"
+//               aria-label="Orvix home"
 //               className="
 //                 group
 //                 flex
@@ -380,14 +380,14 @@
 //                 >
 //                   <path
 //                     d="M29.5 8.5C26.6 6.1 22.8 5 18.9 5.5C14.3 6.1 10.8 8.6 10.8 12.1C10.8 15.6 14.1 17.1 19.8 18.1C25.2 19 28.8 20.5 28.8 24.3C28.8 28.5 24.8 31.5 19.2 31.5C15.1 31.5 11.7 30.1 9.1 27.6"
-//                     stroke="url(#shenron-gradient)"
+//                     stroke="url(#Orvix-gradient)"
 //                     strokeWidth="2.8"
 //                     strokeLinecap="round"
 //                   />
 
 //                   <path
 //                     d="M8.5 27.5L12.1 27.1L10.2 30.7"
-//                     stroke="url(#shenron-gradient)"
+//                     stroke="url(#Orvix-gradient)"
 //                     strokeWidth="2.3"
 //                     strokeLinecap="round"
 //                     strokeLinejoin="round"
@@ -410,7 +410,7 @@
 
 //                   <defs>
 //                     <linearGradient
-//                       id="shenron-gradient"
+//                       id="Orvix-gradient"
 //                       x1="7"
 //                       y1="7"
 //                       x2="32"
@@ -438,7 +438,7 @@
 //                     text-white
 //                   "
 //                 >
-//                   SHENRON
+//                   Orvix
 //                 </span>
 
 //                 <span

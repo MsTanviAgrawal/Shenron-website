@@ -156,14 +156,14 @@ export default function Sidebar({
               >
                 <path
                   d="M29.5 8.5C26.6 6.1 22.8 5 18.9 5.5C14.3 6.1 10.8 8.6 10.8 12.1C10.8 15.6 14.1 17.1 19.8 18.1C25.2 19 28.8 20.5 28.8 24.3C28.8 28.5 24.8 31.5 19.2 31.5C15.1 31.5 11.7 30.1 9.1 27.6"
-                  stroke="url(#sidebar-shenron-gradient)"
+                  stroke="url(#sidebar-Orvix-gradient)"
                   strokeWidth="2.8"
                   strokeLinecap="round"
                 />
 
                 <path
                   d="M8.5 27.5L12.1 27.1L10.2 30.7"
-                  stroke="url(#sidebar-shenron-gradient)"
+                  stroke="url(#sidebar-Orvix-gradient)"
                   strokeWidth="2.3"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -186,7 +186,7 @@ export default function Sidebar({
 
                 <defs>
                   <linearGradient
-                    id="sidebar-shenron-gradient"
+                    id="sidebar-Orvix-gradient"
                     x1="7"
                     y1="7"
                     x2="32"
@@ -203,7 +203,7 @@ export default function Sidebar({
             {!collapsed && (
               <span className="min-w-0">
                 <span className="block text-[15px] font-semibold tracking-[0.28em] text-white">
-                  SHENRON
+                  Orvix
                 </span>
 
                 <span className="mt-1 block text-[8px] font-medium tracking-[0.22em] text-slate-600">

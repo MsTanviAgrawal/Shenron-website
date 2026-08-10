@@ -51,7 +51,7 @@ export default function DashboardHeader({
 
           <div className="hidden min-w-0 sm:block">
             <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-600">
-              Shenron Workspace
+              Orvix Workspace
             </p>
 
             <p className="mt-0.5 truncate text-sm font-semibold text-white">

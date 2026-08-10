@@ -5,7 +5,7 @@ import { getMarketBySlug } from "../../../data/market";
 export const metadata: Metadata = {
   title: "Forex Market Analysis | EUR/USD & Currency Markets",
   description:
-    "Explore forex market analysis, currency pairs, market structure, trading sessions, technical analysis and risk awareness with Shenron.",
+    "Explore forex market analysis, currency pairs, market structure, trading sessions, technical analysis and risk awareness with Orvix.",
   keywords: [
     "forex market analysis",
     "forex trading",

@@ -23,11 +23,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Shenron | Market Intelligence for Modern Traders",
+  title: "About Orvix | Market Intelligence for Modern Traders",
   description:
-    "Learn how Shenron helps traders understand forex, gold, crypto and global indices through structured market intelligence, technical analysis, risk context and trading education.",
+    "Learn how Orvix helps traders understand forex, gold, crypto and global indices through structured market intelligence, technical analysis, risk context and trading education.",
   keywords: [
-    "about Shenron",
+    "about Orvix",
     "market intelligence platform",
     "trading analysis platform",
     "forex market intelligence",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     "financial market analysis",
   ],
   openGraph: {
-    title: "About Shenron | Market Intelligence for Modern Traders",
+    title: "About Orvix | Market Intelligence for Modern Traders",
     description:
-      "Discover the thinking behind Shenron's market-intelligence experience for forex, gold, crypto and global indices.",
+      "Discover the thinking behind Orvix's market-intelligence experience for forex, gold, crypto and global indices.",
     type: "website",
   },
 };
@@ -53,7 +53,7 @@ const principles = [
     icon: Eye,
     title: "Clarity over noise",
     description:
-      "Markets generate an enormous amount of information. Shenron organizes the most useful concepts into a cleaner experience so traders can focus on context instead of chasing every movement.",
+      "Markets generate an enormous amount of information. Orvix organizes the most useful concepts into a cleaner experience so traders can focus on context instead of chasing every movement.",
   },
   {
     icon: BrainCircuit,
@@ -65,7 +65,7 @@ const principles = [
     icon: ShieldCheck,
     title: "Risk-aware by design",
     description:
-      "Every market idea should have a risk perspective. Shenron puts responsible decision-making alongside technical and market analysis.",
+      "Every market idea should have a risk perspective. Orvix puts responsible decision-making alongside technical and market analysis.",
   },
   {
     icon: BookOpen,
@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(98,230,255,0.9)]" />
 
                 <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-200/80">
-                  About Shenron
+                  About Orvix
                 </span>
               </div>
 
@@ -208,7 +208,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="mt-7 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
-                Shenron is a market-intelligence experience designed to bring
+                Orvix is a market-intelligence experience designed to bring
                 market context, technical analysis, risk awareness and trading
                 education into one focused workspace.
               </p>
@@ -285,7 +285,7 @@ export default function AboutPage() {
                 <div className="flex items-center justify-between border-b border-white/[0.06] pb-5">
                   <div>
                     <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-600">
-                      Shenron Intelligence
+                      Orvix Intelligence
                     </p>
 
                     <p className="mt-1 text-sm font-semibold text-white">
@@ -366,7 +366,7 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300/70">
-                Why Shenron
+                Why Orvix
               </span>
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -389,7 +389,7 @@ export default function AboutPage() {
               </p>
 
               <p>
-                Shenron is designed around that problem. The experience brings
+                Orvix is designed around that problem. The experience brings
                 markets, analysis, education and risk context together so the
                 user can move from discovery to understanding without losing
                 the bigger picture.
@@ -475,7 +475,7 @@ export default function AboutPage() {
               </h2>
 
               <p className="mt-4 text-sm leading-6 text-slate-500">
-                Shenron's information architecture is built around the asset
+                Orvix's information architecture is built around the asset
                 classes traders commonly monitor throughout the trading week.
               </p>
             </div>
@@ -541,7 +541,7 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300/70">
-                The Shenron Model
+                The Orvix Model
               </span>
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -758,7 +758,7 @@ export default function AboutPage() {
                   </div>
 
                   <p className="mt-2 text-xs leading-6 text-slate-600">
-                    Shenron is designed as a frontend market-intelligence and
+                    Orvix is designed as a frontend market-intelligence and
                     education experience. Market examples and interface data
                     should not be interpreted as personalized financial advice
                     or guaranteed trading outcomes.
@@ -850,7 +850,7 @@ export default function AboutPage() {
 
           <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.06] pt-6 text-[10px] leading-5 text-slate-700 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              Shenron provides market information and educational content for
+              Orvix provides market information and educational content for
               informational purposes.
             </p>
 

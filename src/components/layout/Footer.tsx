@@ -66,7 +66,7 @@
 
 // const companyLinks = [
 //   {
-//     label: "About Shenron",
+//     label: "About Orvix",
 //     href: "/#about",
 //   },
 //   {
@@ -185,7 +185,7 @@
 //               <Link
 //                 href="/"
 //                 className="group inline-flex items-center gap-3"
-//                 aria-label="Shenron home"
+//                 aria-label="Orvix home"
 //               >
 //                 {/* Logo mark */}
 //                 <span
@@ -230,14 +230,14 @@
 //                   >
 //                     <path
 //                       d="M29.5 8.5C26.6 6.1 22.8 5 18.9 5.5C14.3 6.1 10.8 8.6 10.8 12.1C10.8 15.6 14.1 17.1 19.8 18.1C25.2 19 28.8 20.5 28.8 24.3C28.8 28.5 24.8 31.5 19.2 31.5C15.1 31.5 11.7 30.1 9.1 27.6"
-//                       stroke="url(#footer-shenron-gradient)"
+//                       stroke="url(#footer-Orvix-gradient)"
 //                       strokeWidth="2.8"
 //                       strokeLinecap="round"
 //                     />
 
 //                     <path
 //                       d="M8.5 27.5L12.1 27.1L10.2 30.7"
-//                       stroke="url(#footer-shenron-gradient)"
+//                       stroke="url(#footer-Orvix-gradient)"
 //                       strokeWidth="2.3"
 //                       strokeLinecap="round"
 //                       strokeLinejoin="round"
@@ -260,7 +260,7 @@
 
 //                     <defs>
 //                       <linearGradient
-//                         id="footer-shenron-gradient"
+//                         id="footer-Orvix-gradient"
 //                         x1="7"
 //                         y1="7"
 //                         x2="32"
@@ -283,7 +283,7 @@
 //                       text-white
 //                     "
 //                   >
-//                     SHENRON
+//                     Orvix
 //                   </span>
 
 //                   <span
@@ -411,7 +411,7 @@
 //                   </h2>
 
 //                   <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
-//                     Explore the Shenron dashboard for market overview,
+//                     Explore the Orvix dashboard for market overview,
 //                     watchlists, analysis and risk-focused insights.
 //                   </p>
 
@@ -601,7 +601,7 @@
 //               </p>
 
 //               <p className="mt-1 text-xs leading-5 text-slate-500">
-//                 Explore the FAQ or contact the Shenron support team.
+//                 Explore the FAQ or contact the Orvix support team.
 //               </p>
 //             </div>
 //           </div>
@@ -675,7 +675,7 @@
 //               </h3>
 
 //               <p className="mt-2 max-w-5xl text-xs leading-6 text-slate-500">
-//                 Shenron provides market commentary, educational resources,
+//                 Orvix provides market commentary, educational resources,
 //                 technical analysis and informational trading content. Nothing
 //                 on this website should be considered personalized financial,
 //                 investment, legal or tax advice. Trading forex, precious
@@ -696,7 +696,7 @@
 //         <div className="flex flex-col gap-5 py-8 sm:flex-row sm:items-center sm:justify-between">
 //           <div>
 //             <p className="text-xs text-slate-600">
-//               © {currentYear} Shenron. All rights reserved.
+//               © {currentYear} Orvix. All rights reserved.
 //             </p>
 
 //             <p className="mt-1 text-[11px] text-slate-700">
@@ -800,7 +800,7 @@ export default function Footer() {
 
               <span>
                 <span className="block text-sm font-semibold tracking-[0.28em] text-white">
-                  SHENRON
+                  Orvix
                 </span>
 
                 <span className="block text-[8px] font-medium tracking-[0.22em] text-slate-600">
@@ -911,7 +911,7 @@ export default function Footer() {
                 href="/about"
                 className="block text-sm text-slate-500 transition-colors hover:text-white"
               >
-                About Shenron
+                About Orvix
               </Link>
 
               <Link
@@ -977,7 +977,7 @@ export default function Footer() {
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-slate-600" />
 
             <p className="text-xs leading-6 text-slate-600">
-              Shenron is a market intelligence and
+              Orvix is a market intelligence and
               educational experience. Market data shown
               in this frontend is illustrative and should
               not be treated as real-time financial
@@ -1005,7 +1005,7 @@ export default function Footer() {
           "
         >
           <p className="text-xs text-slate-700">
-            © {new Date().getFullYear()} Shenron. All
+            © {new Date().getFullYear()} Orvix. All
             rights reserved.
           </p>
 

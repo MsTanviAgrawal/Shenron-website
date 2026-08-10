@@ -332,7 +332,7 @@
 //             {!collapsed && (
 //               <span>
 //                 <span className="block text-sm font-semibold tracking-[0.24em] text-white">
-//                   SHENRON
+//                   Orvix
 //                 </span>
 
 //                 <span className="mt-0.5 block text-[8px] font-medium tracking-[0.2em] text-slate-600">
@@ -545,7 +545,7 @@
 
 //           <div className="hidden min-w-0 sm:block">
 //             <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-600">
-//               Shenron Workspace
+//               Orvix Workspace
 //             </p>
 
 //             <h1 className="mt-0.5 truncate text-sm font-semibold text-white">
@@ -1597,7 +1597,7 @@
 //           ============================================================ */}
 //           <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.05] pt-6 text-[9px] leading-5 text-slate-700 sm:flex-row sm:items-center sm:justify-between">
 //             <p>
-//               Shenron dashboard • Frontend demonstration with illustrative
+//               Orvix dashboard • Frontend demonstration with illustrative
 //               market data.
 //             </p>
 

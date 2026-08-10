@@ -616,7 +616,7 @@ export default function MarketDetailPage({
                 </h3>
 
                 <p className="mt-2 text-xs leading-6 text-slate-600">
-                  Explore this topic as part of the Shenron trading education
+                  Explore this topic as part of the Orvix trading education
                   framework.
                 </p>
               </Link>
@@ -713,7 +713,7 @@ export default function MarketDetailPage({
               </h2>
 
               <p className="mt-3 text-xs leading-6 text-slate-600">
-                Shenron provides educational and informational market content.
+                Orvix provides educational and informational market content.
                 The information presented on this page is not personalized
                 financial or investment advice. Financial markets involve
                 significant risk, and past performance does not guarantee

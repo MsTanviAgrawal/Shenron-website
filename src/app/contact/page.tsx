@@ -35,7 +35,7 @@ const inquiryOptions: {
   {
     value: "General inquiry",
     label: "General inquiry",
-    description: "Questions about Shenron or the website",
+    description: "Questions about Orvix or the website",
     icon: MessageSquare,
   },
   {
@@ -71,8 +71,8 @@ const contactChannels = [
     title: "Send us an email",
     description:
       "For general questions, feedback, platform issues and content-related inquiries.",
-    value: "support@shenron.com",
-    href: "mailto:support@shenron.com",
+    value: "support@Orvix.com",
+    href: "mailto:support@Orvix.com",
   },
   {
     icon: Clock3,
@@ -85,9 +85,9 @@ const contactChannels = [
   {
     icon: MapPin,
     eyebrow: "Digital platform",
-    title: "Shenron online",
+    title: "Orvix online",
     description:
-      "Shenron is designed as a digital market-intelligence and trading-education experience.",
+      "Orvix is designed as a digital market-intelligence and trading-education experience.",
     value: "Online",
   },
 ];
@@ -96,7 +96,7 @@ const quickLinks = [
   {
     title: "Frequently Asked Questions",
     description:
-      "Find quick answers to common questions about Shenron and its market resources.",
+      "Find quick answers to common questions about Orvix and its market resources.",
     href: "/faq",
     icon: CircleHelp,
   },
@@ -255,7 +255,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
-              Have a question about Shenron, market intelligence,
+              Have a question about Orvix, market intelligence,
               technical analysis or trading education? Send us a
               message and we&apos;ll point you toward the right
               resource.
@@ -872,7 +872,7 @@ export default function ContactPage() {
 
                     <p className="text-center text-[9px] leading-5 text-slate-700">
                       By submitting this form, you are contacting
-                      Shenron for general support or information.
+                      Orvix for general support or information.
                       This form is not intended for personalized
                       financial advice.
                     </p>
@@ -896,7 +896,7 @@ export default function ContactPage() {
             </span>
 
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white">
-              Find the right Shenron resource.
+              Find the right Orvix resource.
             </h2>
 
             <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-600">
@@ -965,7 +965,7 @@ export default function ContactPage() {
                 </p>
 
                 <p className="mt-2 max-w-5xl text-[10px] leading-5 text-slate-700">
-                  Shenron&apos;s market information, analysis concepts
+                  Orvix&apos;s market information, analysis concepts
                   and educational resources are provided for general
                   informational and educational purposes. Support
                   representatives do not provide personalized

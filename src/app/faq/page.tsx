@@ -49,7 +49,7 @@ const categories: {
   },
   {
     label: "Platform",
-    description: "Using the Shenron experience",
+    description: "Using the Orvix experience",
     icon: Sparkles,
   },
   {
@@ -76,28 +76,28 @@ const categories: {
 
 const faqItems: FAQItem[] = [
   {
-    question: "What is Shenron?",
+    question: "What is Orvix?",
     answer:
-      "Shenron is a market-intelligence and trading-education experience designed to help users explore forex, gold and metals, crypto and global indices. The platform brings market context, technical analysis concepts, educational resources and risk-aware thinking into one focused interface.",
+      "Orvix is a market-intelligence and trading-education experience designed to help users explore forex, gold and metals, crypto and global indices. The platform brings market context, technical analysis concepts, educational resources and risk-aware thinking into one focused interface.",
     category: "Platform",
     popular: true,
   },
   {
-    question: "Is Shenron a trading or brokerage platform?",
+    question: "Is Orvix a trading or brokerage platform?",
     answer:
-      "No. Shenron is designed primarily as a frontend market-intelligence and educational experience. It does not replace your broker, exchange or other execution platform. Users should independently verify prices, spreads, order details and account conditions with their chosen provider before making any transaction.",
+      "No. Orvix is designed primarily as a frontend market-intelligence and educational experience. It does not replace your broker, exchange or other execution platform. Users should independently verify prices, spreads, order details and account conditions with their chosen provider before making any transaction.",
     category: "Platform",
     popular: true,
   },
   {
-    question: "What markets can I explore on Shenron?",
+    question: "What markets can I explore on Orvix?",
     answer:
       "The platform is organized around four major market areas: forex, gold and metals, crypto and global indices. Each category is designed to provide a focused way to explore market structure, momentum, volatility and educational context.",
     category: "Markets",
     popular: true,
   },
   {
-    question: "Does Shenron provide real-time market data?",
+    question: "Does Orvix provide real-time market data?",
     answer:
       "The frontend architecture can display market-context information and illustrative market examples. Actual execution prices, spreads, liquidity and order conditions should always be confirmed through an appropriate broker or market-data provider. Demonstration values shown in the interface should not be treated as guaranteed live execution prices.",
     category: "Markets",
@@ -105,7 +105,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What is forex market analysis?",
     answer:
-      "Forex market analysis is the process of evaluating currency markets using factors such as price structure, momentum, volatility, market sessions and broader economic context. Shenron's forex section is designed to help users organize those concepts into a clearer research workflow.",
+      "Forex market analysis is the process of evaluating currency markets using factors such as price structure, momentum, volatility, market sessions and broader economic context. Orvix's forex section is designed to help users organize those concepts into a clearer research workflow.",
     category: "Markets",
   },
   {
@@ -117,13 +117,13 @@ const faqItems: FAQItem[] = [
   {
     question: "Why is crypto analysis different from traditional markets?",
     answer:
-      "Crypto markets operate continuously and can experience substantial volatility and liquidity changes. Shenron's crypto section therefore emphasizes momentum, volatility, market structure and the importance of validating conditions before making a trading decision.",
+      "Crypto markets operate continuously and can experience substantial volatility and liquidity changes. Orvix's crypto section therefore emphasizes momentum, volatility, market structure and the importance of validating conditions before making a trading decision.",
     category: "Markets",
   },
   {
     question: "What are global indices?",
     answer:
-      "Global indices represent baskets or benchmarks of securities and are commonly used to understand broader equity-market performance. Shenron's indices area focuses on market structure, momentum, volatility and broader risk context around major index markets.",
+      "Global indices represent baskets or benchmarks of securities and are commonly used to understand broader equity-market performance. Orvix's indices area focuses on market structure, momentum, volatility and broader risk context around major index markets.",
     category: "Markets",
   },
   {
@@ -158,13 +158,13 @@ const faqItems: FAQItem[] = [
     category: "Analysis",
   },
   {
-    question: "Does Shenron provide buy and sell signals?",
+    question: "Does Orvix provide buy and sell signals?",
     answer:
       "The platform is designed around market context, analysis and education rather than presenting guaranteed buy or sell outcomes. Any example analysis should be treated as informational and independently evaluated before a user makes a financial decision.",
     category: "Analysis",
   },
   {
-    question: "Is Shenron suitable for beginners?",
+    question: "Is Orvix suitable for beginners?",
     answer:
       "Yes. The platform is intentionally structured so beginners can start with market fundamentals and educational material before progressing toward technical analysis, market structure and risk-management concepts.",
     category: "Education",
@@ -196,25 +196,25 @@ const faqItems: FAQItem[] = [
     category: "Risk",
   },
   {
-    question: "Does Shenron provide personalized financial advice?",
+    question: "Does Orvix provide personalized financial advice?",
     answer:
-      "No. Shenron's market information, analysis concepts and educational material are intended for general informational and educational purposes. They should not be treated as personalized investment, financial or trading advice.",
+      "No. Orvix's market information, analysis concepts and educational material are intended for general informational and educational purposes. They should not be treated as personalized investment, financial or trading advice.",
     category: "Risk",
   },
   {
-    question: "Can I use Shenron's market analysis to place trades?",
+    question: "Can I use Orvix's market analysis to place trades?",
     answer:
       "You can use the educational material and market context as part of your own research process, but you should independently evaluate every decision. Verify current prices, spreads, liquidity, market conditions and execution details through your broker or relevant market-data source before placing an order.",
     category: "Risk",
   },
   {
-    question: "Why does Shenron emphasize education instead of predictions?",
+    question: "Why does Orvix emphasize education instead of predictions?",
     answer:
-      "Markets are uncertain. A strong educational experience should help users understand how markets work and how to evaluate scenarios instead of encouraging blind dependence on predictions. Shenron is therefore designed around context, research and disciplined decision-making.",
+      "Markets are uncertain. A strong educational experience should help users understand how markets work and how to evaluate scenarios instead of encouraging blind dependence on predictions. Orvix is therefore designed around context, research and disciplined decision-making.",
     category: "Education",
   },
   {
-    question: "How can I contact Shenron for support?",
+    question: "How can I contact Orvix for support?",
     answer:
       "Use the Contact & Support section of the website for general questions, feedback or assistance. The FAQ is intended to answer common questions quickly, while the contact page provides a dedicated route for questions that need further attention.",
     category: "Platform",
@@ -303,7 +303,7 @@ export default function FAQPage() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
-              Find answers about Shenron, market analysis, forex, gold,
+              Find answers about Orvix, market analysis, forex, gold,
               crypto, global indices, trading education and responsible
               risk management.
             </p>
@@ -945,7 +945,7 @@ export default function FAQPage() {
                 </p>
 
                 <p className="mt-2 max-w-5xl text-[10px] leading-5 text-slate-700">
-                  Shenron provides market information and educational
+                  Orvix provides market information and educational
                   material for general informational purposes. Nothing
                   on this website should be interpreted as personalized
                   financial, investment or trading advice. Trading

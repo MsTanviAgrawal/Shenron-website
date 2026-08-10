@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Shenron | Market Intelligence for Modern Traders",
-    template: "%s | Shenron",
+      "Orvix | Market Intelligence for Modern Traders",
+    template: "%s | Orvix",
   },
 
   description:
-    "Shenron is a modern market intelligence platform for forex, gold, crypto and global indices, combining market context, technical analysis, risk awareness and trading education.",
+    "Orvix is a modern market intelligence platform for forex, gold, crypto and global indices, combining market context, technical analysis, risk awareness and trading education.",
 
   keywords: [
     "forex trading",
@@ -43,18 +43,18 @@ export const metadata: Metadata = {
 
   authors: [
     {
-      name: "Shenron",
+      name: "Orvix",
     },
   ],
 
-  creator: "Shenron",
+  creator: "Orvix",
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Shenron",
+    siteName: "Orvix",
     title:
-      "Shenron | Market Intelligence for Modern Traders",
+      "Orvix | Market Intelligence for Modern Traders",
     description:
       "Explore market context, technical analysis, risk insights and trading education for forex, gold, crypto and global indices.",
   },

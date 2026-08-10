@@ -41,9 +41,9 @@ export const markets: MarketData[] = [
     volatility: "Low",
     session: "London / New York",
     color: "cyan",
-    seoTitle: "Forex Market Analysis & Trading Intelligence | Shenron",
+    seoTitle: "Forex Market Analysis & Trading Intelligence | Orvix",
     seoDescription:
-      "Explore forex market analysis, currency pairs, market structure, trading sessions, technical analysis and risk awareness with Shenron.",
+      "Explore forex market analysis, currency pairs, market structure, trading sessions, technical analysis and risk awareness with Orvix.",
     keywords: [
       "forex market analysis",
       "forex trading",
@@ -93,9 +93,9 @@ export const markets: MarketData[] = [
     volatility: "Medium",
     session: "London / New York",
     color: "amber",
-    seoTitle: "Gold Market Analysis & XAU/USD Trading Insights | Shenron",
+    seoTitle: "Gold Market Analysis & XAU/USD Trading Insights | Orvix",
     seoDescription:
-      "Explore gold market analysis, XAU/USD technical levels, price action, market structure, volatility and risk awareness with Shenron.",
+      "Explore gold market analysis, XAU/USD technical levels, price action, market structure, volatility and risk awareness with Orvix.",
     keywords: [
       "gold market analysis",
       "XAU USD analysis",
@@ -145,7 +145,7 @@ export const markets: MarketData[] = [
     volatility: "High",
     session: "24 / 7",
     color: "violet",
-    seoTitle: "Crypto Market Analysis & Bitcoin Trading Insights | Shenron",
+    seoTitle: "Crypto Market Analysis & Bitcoin Trading Insights | Orvix",
     seoDescription:
       "Explore crypto market analysis, Bitcoin and Ethereum trends, technical analysis, market structure, volatility and digital asset risk.",
     keywords: [
@@ -197,7 +197,7 @@ export const markets: MarketData[] = [
     volatility: "Medium",
     session: "US Cash",
     color: "emerald",
-    seoTitle: "Global Indices Analysis & Market Intelligence | Shenron",
+    seoTitle: "Global Indices Analysis & Market Intelligence | Orvix",
     seoDescription:
       "Explore NASDAQ, S&P 500, Dow Jones and global index market analysis with technical trends, momentum, volatility and risk context.",
     keywords: [
