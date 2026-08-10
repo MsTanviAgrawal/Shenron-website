@@ -18,6 +18,17 @@ import {
   Zap,
 } from "lucide-react";
 
+const tickerItems = [
+  { symbol: "XAU/USD", price: "2,438.21", change: "+1.82%", positive: true },
+  { symbol: "EUR/USD", price: "1.1742", change: "+0.31%", positive: true },
+  { symbol: "BTC/USD", price: "118,240", change: "+2.18%", positive: true },
+  { symbol: "NASDAQ", price: "21,482", change: "+0.72%", positive: true },
+  { symbol: "ETH/USD", price: "3,482.10", change: "+3.14%", positive: true },
+  { symbol: "GBP/USD", price: "1.3125", change: "-0.18%", positive: false },
+  { symbol: "S&P 500", price: "5,635.20", change: "+0.85%", positive: true },
+  { symbol: "WTI CRUDE", price: "78.45", change: "-0.62%", positive: false },
+];
+
 const markets = [
   {
     id: "forex",
@@ -133,7 +144,6 @@ const faqs = [
       "Yes. Orvix is designed to present market concepts in a structured way, while the education section provides introductory material for people learning about forex, technical analysis and risk management.",
   },
 ];
-
 
 const heroChartPoints = [
   { x: 0, y: 178, value: "2,421.84", change: "+0.42%" },
@@ -362,8 +372,6 @@ export default function Home() {
           50% { opacity: 0.72; }
         }
 
-        /* Dark Quantum Finance gradient field: slow, layered motion keeps the
-           hero alive without competing with the content or dashboard. */
         @keyframes heroGradientSweep {
           0%, 100% {
             transform: translate3d(-10%, -4%, 0) rotate(-8deg) scale(1);
@@ -394,15 +402,21 @@ export default function Home() {
         }
 
         @keyframes marketTickerScroll {
-          from {
+          0% {
             transform: translate3d(0, 0, 0);
           }
-
-          to {
-            /* The second identical ticker set begins exactly where the first
-               set ends, so -50% creates a seamless right-to-left loop. */
+          100% {
             transform: translate3d(-50%, 0, 0);
           }
+        }
+
+        /* Hide scrollbars while preserving scroll functionality */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
 
         .hero-gradient-sweep {
@@ -423,15 +437,11 @@ export default function Home() {
         .market-ticker-track {
           width: max-content;
           min-width: max-content;
-          animation: marketTickerScroll 28s linear infinite;
-          animation-timing-function: linear;
+          animation: marketTickerScroll 30s linear infinite;
           will-change: transform;
-          transform: translate3d(0, 0, 0);
         }
 
-        /* Pause at the exact position under the pointer. */
-        .market-ticker:hover .market-ticker-track,
-        .market-ticker:focus-within .market-ticker-track {
+        .market-ticker-container:hover .market-ticker-track {
           animation-play-state: paused;
         }
 
@@ -487,27 +497,23 @@ export default function Home() {
           .hero-gradient-pulse, .market-ticker-track { animation: none !important; }
         }
       `}</style>
+
       {/* ================================================================
           HERO
       ================================================================= */}
       <section className="relative isolate flex min-h-screen items-center overflow-hidden pt-28">
-        {/* Hero-only ambient market atmosphere. It sits behind every existing hero element. */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         >
-          {/* Slow cyan/violet aurora fields */}
           <div className="hero-aurora-one absolute left-[4%] top-[-18%] h-[72%] w-[58%] rounded-full bg-cyan-400/[0.07] blur-[110px]" />
           <div className="hero-aurora-two absolute right-[-10%] top-[18%] h-[68%] w-[55%] rounded-full bg-violet-500/[0.065] blur-[120px]" />
           <div className="hero-aurora-one absolute bottom-[-30%] left-[28%] h-[55%] w-[45%] rounded-full bg-cyan-300/[0.035] blur-[120px]" />
 
-          {/* Slow quantum-gradient ribbons: intentionally soft and oversized so
-              the motion reads as atmosphere rather than a foreground effect. */}
-          <div className="hero-gradient-sweep absolute left-[-18%] top-[4%] h-[72%] w-[68%] rounded-full bg-[conic-gradient(from_210deg_at_50%_50%,rgba(34,211,238,0)_0deg,rgba(34,211,238,0.13)_72deg,rgba(139,124,255,0.12)_148deg,rgba(34,211,238,0)_240deg,rgba(34,211,238,0)_360deg)] blur-[70px] opacity-70" />
-          <div className="hero-gradient-sweep-reverse absolute right-[-20%] top-[14%] h-[76%] w-[72%] rounded-full bg-[conic-gradient(from_30deg_at_50%_50%,rgba(139,124,255,0)_0deg,rgba(139,124,255,0.12)_82deg,rgba(34,211,238,0.10)_165deg,rgba(139,124,255,0)_252deg,rgba(139,124,255,0)_360deg)] blur-[82px] opacity-65" />
+          <div className="hero-gradient-sweep absolute left-[-18%] top-[4%] h-[72%] w-[68%] rounded-full bg-[conic-gradient(from_210deg_at_50%_50%,rgba(34,211,238,0)_0deg,rgba(34,211,238,0.13)_72deg,rgba(139,124,255,0.12)_148deg,rgba(34,211,238,0)_240deg,rgba(34,211,238,0)_360deg)] opacity-70 blur-[70px]" />
+          <div className="hero-gradient-sweep-reverse absolute right-[-20%] top-[14%] h-[76%] w-[72%] rounded-full bg-[conic-gradient(from_30deg_at_50%_50%,rgba(139,124,255,0)_0deg,rgba(139,124,255,0.12)_82deg,rgba(34,211,238,0.10)_165deg,rgba(139,124,255,0)_252deg,rgba(139,124,255,0)_360deg)] opacity-65 blur-[82px]" />
           <div className="hero-gradient-pulse absolute left-[42%] top-[25%] h-[48%] w-[32%] rounded-full bg-cyan-300/[0.045] blur-[100px]" />
 
-          {/* Moving technical grid */}
           <div
             className="hero-ambient-grid absolute inset-[-90px] opacity-[0.18]"
             style={{
@@ -521,17 +527,14 @@ export default function Home() {
             }}
           />
 
-          {/* Large orbital rings create a subtle market-network focal point */}
           <div className="hero-orbit-one absolute left-[64%] top-[42%] h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.055]" />
           <div className="hero-orbit-two absolute left-[64%] top-[42%] h-[590px] w-[590px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-300/[0.06] [transform:translate(-50%,-50%)_rotate(18deg)]" />
           <div className="hero-orbit-three absolute left-[64%] top-[42%] h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.04] [transform:translate(-50%,-50%)_rotate(-22deg)]" />
 
-          {/* Tiny orbital ticks */}
           <span className="hero-star absolute left-[64%] top-[7%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_14px_rgba(98,230,255,0.8)]" />
           <span className="hero-star absolute left-[86%] top-[42%] h-1.5 w-1.5 rounded-full bg-violet-200 shadow-[0_0_16px_rgba(139,124,255,0.8)]" style={{ animationDelay: "1.1s" }} />
           <span className="hero-star absolute left-[42%] top-[62%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(98,230,255,0.75)]" style={{ animationDelay: "2.2s" }} />
 
-          {/* Floating market particles */}
           {heroBackgroundParticles.map((particle, index) => (
             <span
               key={`hero-particle-${index}`}
@@ -551,7 +554,6 @@ export default function Home() {
             />
           ))}
 
-          {/* Subtle flowing data traces */}
           <div className="absolute left-[8%] top-[31%] h-px w-[180px] overflow-hidden bg-cyan-300/[0.07]">
             <span className="hero-signal block h-full w-16 bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
           </div>
@@ -562,7 +564,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Market telemetry marks */}
           <div className="absolute left-[6%] top-[46%] hidden w-28 space-y-2 opacity-50 lg:block">
             <div className="hero-data-pulse h-px w-full bg-gradient-to-r from-cyan-300/0 via-cyan-300/30 to-cyan-300/0" />
             <div className="hero-data-pulse h-px w-3/4 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent" style={{ animationDelay: "1.2s" }} />
@@ -583,12 +584,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dark vignette keeps the animated layer atmospheric rather than distracting. */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,10,15,0.14)_55%,rgba(7,10,15,0.82)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#070A0F] to-transparent" />
         </div>
 
-        {/* Existing background glow */}
         <div
           aria-hidden="true"
           className="
@@ -622,7 +621,6 @@ export default function Home() {
 
         <div className="relative mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-10">
           <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
-            {/* Hero copy */}
             <div>
               <div
                 className="
@@ -720,7 +718,6 @@ export default function Home() {
                   <span className="relative z-10">
                     Explore Dashboard
                   </span>
-                  Explore Dashboard
 
                   <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
@@ -763,7 +760,6 @@ export default function Home() {
                   <span className="relative z-10">
                     Explore Markets
                   </span>
-                  Explore Markets
 
                   <ArrowRight className="relative z-10 h-4 w-4" />
                 </Link>
@@ -787,7 +783,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero dashboard visual */}
             <div className="relative">
               <div
                 aria-hidden="true"
@@ -812,7 +807,6 @@ export default function Home() {
                   backdrop-blur-xl
                 "
               >
-                {/* Window top */}
                 <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-red-400/70" />
@@ -856,7 +850,6 @@ export default function Home() {
                     </span>
                   </div>
 
-                  {/* Chart */}
                   <div
                     className="relative mt-8 h-56 overflow-hidden rounded-2xl border border-white/[0.05] bg-[#080D14]"
                     onMouseMove={handleHeroChartMove}
@@ -1048,10 +1041,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Intelligence cards */}
                   <div className="mt-4 grid grid-cols-3 gap-2">
                     <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
-                      <p className="text-[9px] uppercase tracking-wider text-slate-600">
+                      <p className="text-[9px] uppercase tracking-wider text-slate-500">
                         Momentum
                       </p>
                       <p className="mt-1 text-xs font-semibold text-white">
@@ -1060,7 +1052,7 @@ export default function Home() {
                     </div>
 
                     <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
-                      <p className="text-[9px] uppercase tracking-wider text-slate-600">
+                      <p className="text-[9px] uppercase tracking-wider text-slate-500">
                         Volatility
                       </p>
                       <p className="mt-1 text-xs font-semibold text-amber-300">
@@ -1069,7 +1061,7 @@ export default function Home() {
                     </div>
 
                     <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
-                      <p className="text-[9px] uppercase tracking-wider text-slate-600">
+                      <p className="text-[9px] uppercase tracking-wider text-slate-500">
                         Risk
                       </p>
                       <p className="mt-1 text-xs font-semibold text-cyan-300">
@@ -1082,7 +1074,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
           <div className="mt-14 flex justify-center lg:mt-20">
             <Link
               href="#markets"
@@ -1097,26 +1088,21 @@ export default function Home() {
       </section>
 
       {/* ================================================================
-          MARKET TICKER
+          MARKET TICKER (HORIZONTALLY SCROLLABLE WITH HIDDEN SCROLLBAR)
       ================================================================= */}
       <div
-        className="market-ticker border-y border-white/[0.06] bg-[#090E15]"
+        className="market-ticker-container border-y border-white/[0.06] bg-[#090E15]"
         aria-label="Market ticker"
       >
-        <div className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
+        <div className="no-scrollbar overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing">
           <div className="market-ticker-track flex min-w-max">
-
-            {[
-              ["XAU/USD", "2,438.21", "+1.82%"],
-              ["EUR/USD", "1.1742", "+0.31%"],
-              ["BTC/USD", "118,240", "+2.18%"],
-              ["NASDAQ", "21,482", "+0.72%"],
-            ].map(([symbol, price, change]) => (
+            {/* First Copy */}
+            {tickerItems.map((item, idx) => (
               <div
-                key={`ticker-a-${symbol}`}
+                key={`ticker-a-${item.symbol}-${idx}`}
                 className="
                   flex
-                  w-[clamp(180px,25vw,320px)]
+                  w-[240px]
                   shrink-0
                   items-center
                   justify-between
@@ -1128,31 +1114,31 @@ export default function Home() {
                 "
               >
                 <span className="text-xs font-medium text-slate-500">
-                  {symbol}
+                  {item.symbol}
                 </span>
 
                 <span className="text-xs font-semibold text-slate-300">
-                  {price}
+                  {item.price}
                 </span>
 
-                <span className="text-[10px] font-semibold text-emerald-400">
-                  {change}
+                <span
+                  className={`text-[10px] font-semibold ${
+                    item.positive ? "text-emerald-400" : "text-rose-400"
+                  }`}
+                >
+                  {item.change}
                 </span>
               </div>
             ))}
 
-            {[
-              ["XAU/USD", "2,438.21", "+1.82%"],
-              ["EUR/USD", "1.1742", "+0.31%"],
-              ["BTC/USD", "118,240", "+2.18%"],
-              ["NASDAQ", "21,482", "+0.72%"],
-            ].map(([symbol, price, change]) => (
+            {/* Second Duplicate Copy (For Infinite Scroll Loop) */}
+            {tickerItems.map((item, idx) => (
               <div
-                key={`ticker-b-${symbol}`}
+                key={`ticker-b-${item.symbol}-${idx}`}
                 aria-hidden="true"
                 className="
                   flex
-                  w-[clamp(180px,25vw,320px)]
+                  w-[240px]
                   shrink-0
                   items-center
                   justify-between
@@ -1163,15 +1149,19 @@ export default function Home() {
                 "
               >
                 <span className="text-xs font-medium text-slate-500">
-                  {symbol}
+                  {item.symbol}
                 </span>
 
                 <span className="text-xs font-semibold text-slate-300">
-                  {price}
+                  {item.price}
                 </span>
 
-                <span className="text-[10px] font-semibold text-emerald-400">
-                  {change}
+                <span
+                  className={`text-[10px] font-semibold ${
+                    item.positive ? "text-emerald-400" : "text-rose-400"
+                  }`}
+                >
+                  {item.change}
                 </span>
               </div>
             ))}
@@ -1929,11 +1919,6 @@ export default function Home() {
 
       {/* ================================================================
           LEGAL ANCHORS
-          
-          These are intentionally small placeholders because you asked
-          for only landing + dashboard pages. They give the Footer's
-          Privacy and Terms links a real destination without creating
-          unnecessary routes.
       ================================================================= */}
       <section
         id="privacy"
