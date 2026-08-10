@@ -28,7 +28,7 @@ const workspaceItems = [
   },
   {
     label: "Markets",
-    href: "/dashboard/dashboardmarkets",
+    href: "/dashboard/markets",
     icon: BarChart3,
   },
   {

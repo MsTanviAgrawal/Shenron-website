@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { useState } from "react";
-
 import Sidebar from "@/components/dashboard/Sidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 
@@ -18,19 +17,12 @@ export default function DashboardShell({
 
   return (
     <div className="min-h-screen bg-[#070A0F] text-white">
-      {/* =========================================================
-          DASHBOARD SIDEBAR
-      ========================================================= */}
-
+     
       <Sidebar
         collapsed={collapsed}
         mobileOpen={mobileOpen}
         onCloseMobile={() => setMobileOpen(false)}
       />
-
-      {/* =========================================================
-          DASHBOARD MAIN AREA
-      ========================================================= */}
 
       <div
         className={`
@@ -40,10 +32,7 @@ export default function DashboardShell({
           ${collapsed ? "lg:pl-[88px]" : "lg:pl-[302px]"}
         `}
       >
-        {/* =======================================================
-            DASHBOARD HEADER
-        ======================================================= */}
-
+  
         <DashboardHeader
           collapsed={collapsed}
           onOpenMobile={() => setMobileOpen(true)}
@@ -52,19 +41,7 @@ export default function DashboardShell({
           }
         />
 
-        {/* =======================================================
-            DASHBOARD PAGE CONTENT
-
-            This is the ONLY area that changes between:
-
-            /dashboard
-            /dashboard/markets
-            /dashboard/analysis
-            /dashboard/watchlist
-            /dashboard/risk
-        ======================================================= */}
-
-        <main className="min-h-screen px-4 pb-10 pt-[104px] sm:px-6 lg:px-8">
+        <main className="min-h-screen px-4 pb-10 pt-6 sm:px-6 lg:px-8">
           <div className="mx-auto w-full max-w-[1480px]">
             {children}
           </div>
