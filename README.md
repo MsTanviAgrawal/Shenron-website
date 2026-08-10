@@ -1,10 +1,10 @@
-Shenron Website
+Orvix Website
 
 This project is a modern market intelligence website built with Next.js and TypeScript. It is designed to give traders a simple place to explore market information, technical analysis, risk awareness, and trading education.
 
 The project focuses on keeping the interface clean and easy to understand instead of showing too much information at once.
 
-Live Website: https://shenron-website-delta.vercel.app/
+Live Website: https://orvix-website-ten.vercel.app/
 
 Overview:
 
@@ -64,11 +64,11 @@ Running the Project Locally:
 
 Clone the repository:
 
-git clone https://github.com/MsTanviAgrawal/Shenron-website.git
+git clone https://github.com/MsTanviAgrawal/Orvix-website.git
 
 Navigate into the project folder:
 
-cd Shenron-website
+cd Orvix-website
 
 Install dependencies:
 
@@ -104,7 +104,7 @@ Live Demo:
 
 You can check out the live project here:
 
-https://shenron-website-delta.vercel.app/
+https://orvix-website-ten.vercel.app/
 
 
 Contact:
