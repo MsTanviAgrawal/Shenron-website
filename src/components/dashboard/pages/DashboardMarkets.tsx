@@ -19,6 +19,7 @@ import {
 
 export default function DashboardMarkets() {
   const params = useSearchParams();
+
   const selected = params.get("symbol");
 
   return (
@@ -76,51 +77,59 @@ export default function DashboardMarkets() {
               </thead>
 
               <tbody>
-                {markets.map((market) => (
-                  <tr
-                    key={market.symbol}
-                    className={`border-b border-white/[0.04] last:border-0 ${
-                      selected === market.symbol
-                        ? "bg-cyan-300/[0.03]"
-                        : ""
-                    }`}
-                  >
-                    <td className="px-4 py-4">
-                      <Link
-                        href={`/dashboard/markets?symbol=${encodeURIComponent(
-                          market.symbol,
-                        )}`}
-                        className="text-xs font-semibold text-cyan-300"
-                      >
-                        {market.symbol}
-                      </Link>
-                    </td>
+                {markets.map((market) => {
+                  const isSelected =
+                    selected === market.symbol;
 
-                    <td className="px-4 py-4 text-xs text-slate-400">
-                      {market.name}
-                    </td>
+                  const marketHref =
+                    `/dashboard/markets?symbol=${encodeURIComponent(
+                      market.symbol,
+                    )}`;
 
-                    <td className="px-4 py-4 text-xs font-semibold text-white">
-                      {market.price}
-                    </td>
+                  return (
+                    <tr
+                      key={market.symbol}
+                      className={`border-b border-white/[0.04] last:border-0 ${
+                        isSelected
+                          ? "bg-cyan-300/[0.03]"
+                          : ""
+                      }`}
+                    >
+                      <td className="px-4 py-4">
+                        <Link
+                          href={marketHref}
+                          className="text-xs font-semibold text-cyan-300 transition-colors hover:text-cyan-200"
+                        >
+                          {market.symbol}
+                        </Link>
+                      </td>
 
-                    <td className="px-4 py-4 text-xs font-semibold text-emerald-400">
-                      {market.change}
-                    </td>
+                      <td className="px-4 py-4 text-xs text-slate-400">
+                        {market.name}
+                      </td>
 
-                    <td className="px-4 py-4">
-                      <StatusBadge
-                        variant={
-                          market.bias === "Bullish"
-                            ? "success"
-                            : "default"
-                        }
-                      >
-                        {market.bias}
-                      </StatusBadge>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="px-4 py-4 text-xs font-semibold text-white">
+                        {market.price}
+                      </td>
+
+                      <td className="px-4 py-4 text-xs font-semibold text-emerald-400">
+                        {market.change}
+                      </td>
+
+                      <td className="px-4 py-4">
+                        <StatusBadge
+                          variant={
+                            market.bias === "Bullish"
+                              ? "success"
+                              : "default"
+                          }
+                        >
+                          {market.bias}
+                        </StatusBadge>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -144,9 +153,10 @@ export default function DashboardMarkets() {
 
           <Link
             href="/dashboard/analysis"
-            className="mt-5 inline-flex items-center gap-2 text-[10px] font-semibold text-cyan-300"
+            className="mt-5 inline-flex items-center gap-2 text-[10px] font-semibold text-cyan-300 transition-colors hover:text-cyan-200"
           >
             Open analysis
+
             <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
