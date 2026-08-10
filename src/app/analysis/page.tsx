@@ -293,17 +293,17 @@ export default function AnalysisPage() {
                 className="
                   rounded-2xl
                   border
-                  border-white/[0.07]
+                  border-[#635929]
                   bg-white/[0.025]
                   p-5
                   backdrop-blur-xl
                 "
               >
-                <p className="text-2xl font-semibold tracking-tight text-white">
+                <p className="text-2xl font-bold tracking-tight text-[#b0810a]">
                   {value}
                 </p>
 
-                <p className="mt-1 text-xs text-slate-600">
+                <p className="mt-1 text-xs font-semibold text-slate-400">
                   {label}
                 </p>
               </div>

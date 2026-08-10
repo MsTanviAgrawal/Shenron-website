@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -182,6 +184,58 @@ export default function Home() {
   const [activeChartIndex, setActiveChartIndex] = useState<number | null>(null);
   const activeChartPoint =
     activeChartIndex === null ? null : heroChartPoints[activeChartIndex];
+
+  const marketsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mm = gsap.matchMedia();
+
+    // Only apply animations on screens 640px and wider (Desktop/Tablet)
+    mm.add("(min-width: 640px)", () => {
+      const startFluctuation = () => {
+        const cards = gsap.utils.toArray(".market-card") as HTMLElement[];
+
+        cards.forEach((card, index) => {
+          const isEven = index % 2 === 0;
+          const targetY = isEven ? 15 : -15;
+          gsap.set(card, { y: 0 });
+
+          gsap.to(card, {
+            y: targetY,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+          });
+        });
+      };
+
+      // Initial Reveal Scroll Trigger
+      gsap.fromTo(
+        ".market-card",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: marketsRef.current,
+            start: "top 85%",
+            once: true,
+          },
+          onComplete: () => {
+            startFluctuation();
+          },
+        }
+      );
+    });
+
+    return () => mm.revert();
+  }, []);
 
   const handleHeroChartMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -1172,7 +1226,7 @@ export default function Home() {
       {/* ================================================================
           MARKETS
       ================================================================= */}
-      <section id="markets" className="relative py-24 sm:py-28">
+      <section id="markets" className="relative py-24 sm:py-28" ref={marketsRef}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
@@ -1181,7 +1235,7 @@ export default function Home() {
 
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               One platform.
-              <span className="text-slate-500"> Four major markets.</span>
+              <span className="text-[#30c7f5]"> Four major markets.</span>
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-slate-500 sm:text-base">
@@ -1200,6 +1254,8 @@ export default function Home() {
                   id={market.id}
                   href={`#${market.id}-market`}
                   className="
+                    market-card
+                    will-change-transform
                     group
                     rounded-2xl
                     border
@@ -1289,7 +1345,7 @@ export default function Home() {
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 See the market
-                <span className="block text-slate-500">
+                <span className="block text-[#30c7f5]">
                   before you trade it.
                 </span>
               </h2>
@@ -1389,7 +1445,7 @@ export default function Home() {
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Built for clearer
-                <span className="block text-slate-500">
+                <span className="block text-[#30c7f5]">
                   trading decisions.
                 </span>
               </h2>
@@ -1464,7 +1520,7 @@ export default function Home() {
 
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               A simpler way to
-              <span className="text-slate-500"> read the market.</span>
+              <span className="text-[#30c7f5]"> read the market.</span>
             </h2>
           </div>
 
@@ -1488,13 +1544,13 @@ export default function Home() {
             ].map((step) => (
               <div
                 key={step.number}
-                className="rounded-2xl border border-white/[0.07] bg-[#0C1119] p-6"
+                className="rounded-2xl border border-[#6998a7] bg-[#0C1119] p-6"
               >
-                <span className="text-xs font-semibold tracking-[0.18em] text-cyan-300">
+                <span className="text-2xl font-semibold tracking-[0.18em] text-cyan-300">
                   {step.number}
                 </span>
 
-                <h3 className="mt-8 text-base font-semibold text-white">
+                <h3 className="mt-4 text-base font-semibold text-white">
                   {step.title}
                 </h3>
 
@@ -1519,7 +1575,7 @@ export default function Home() {
 
             <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Everything important.
-              <span className="block text-slate-500">
+              <span className="block text-[#30c7f5]">
                 One focused dashboard.
               </span>
             </h2>
@@ -1702,7 +1758,7 @@ export default function Home() {
 
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Learn the market.
-                <span className="block text-slate-500">
+                <span className="block text-[#30c7f5]">
                   Improve the process.
                 </span>
               </h2>
@@ -1826,7 +1882,7 @@ export default function Home() {
       ================================================================= */}
       <section
         id="contact"
-        className="relative overflow-hidden border-t border-white/[0.06] bg-[#090E15] py-18 sm:py-20"
+        className="relative overflow-hidden border-t border-white/[0.06] bg-[#090E15] py-12 sm:py-14"
       >
         <div
           aria-hidden="true"
@@ -1850,7 +1906,7 @@ export default function Home() {
             <Sparkles className="h-5 w-5" />
           </div>
 
-          <h2 className="mt-7 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
             Build a better
             <span className="block bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">
               trading process.
