@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -131,14 +134,381 @@ const faqs = [
   },
 ];
 
+
+const heroChartPoints = [
+  { x: 0, y: 178, value: "2,421.84", change: "+0.42%" },
+  { x: 60, y: 158, value: "2,425.16", change: "+0.56%" },
+  { x: 120, y: 138, value: "2,428.73", change: "+0.71%" },
+  { x: 180, y: 120, value: "2,431.28", change: "+0.83%" },
+  { x: 240, y: 105, value: "2,433.91", change: "+0.94%" },
+  { x: 300, y: 92, value: "2,435.44", change: "+1.07%" },
+  { x: 360, y: 92, value: "2,436.18", change: "+1.21%" },
+  { x: 420, y: 81, value: "2,437.02", change: "+1.36%" },
+  { x: 480, y: 59, value: "2,437.68", change: "+1.52%" },
+  { x: 540, y: 43, value: "2,438.04", change: "+1.69%" },
+  { x: 600, y: 30, value: "2,438.21", change: "+1.82%" },
+];
+
+const heroChartPath = heroChartPoints
+  .map((point, index) => `${index === 0 ? "M" : "L"}${point.x} ${point.y}`)
+  .join(" ");
+
+const heroBackgroundParticles = [
+  { x: 8, y: 24, size: 2, delay: "0s", duration: "9s", color: "cyan" },
+  { x: 15, y: 68, size: 1, delay: "1.8s", duration: "11s", color: "violet" },
+  { x: 23, y: 39, size: 1.5, delay: "3.2s", duration: "10s", color: "cyan" },
+  { x: 31, y: 78, size: 2, delay: "0.9s", duration: "12s", color: "violet" },
+  { x: 39, y: 18, size: 1.5, delay: "4.1s", duration: "10s", color: "cyan" },
+  { x: 47, y: 58, size: 1, delay: "2.6s", duration: "13s", color: "cyan" },
+  { x: 55, y: 31, size: 2, delay: "5s", duration: "11s", color: "violet" },
+  { x: 64, y: 73, size: 1.5, delay: "1.2s", duration: "12s", color: "cyan" },
+  { x: 72, y: 21, size: 1, delay: "3.8s", duration: "9s", color: "violet" },
+  { x: 81, y: 63, size: 2, delay: "2.1s", duration: "13s", color: "cyan" },
+  { x: 89, y: 35, size: 1.5, delay: "4.8s", duration: "10s", color: "violet" },
+  { x: 94, y: 79, size: 1, delay: "0.4s", duration: "12s", color: "cyan" },
+];
+
 export default function Home() {
+  const [activeChartIndex, setActiveChartIndex] = useState<number | null>(null);
+  const activeChartPoint =
+    activeChartIndex === null ? null : heroChartPoints[activeChartIndex];
+
+  const handleHeroChartMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const relativeX = Math.max(
+      0,
+      Math.min(rect.width, event.clientX - rect.left),
+    );
+    const chartX = (relativeX / rect.width) * 600;
+
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    heroChartPoints.forEach((point, index) => {
+      const distance = Math.abs(point.x - chartX);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    setActiveChartIndex(nearestIndex);
+  };
+
   return (
     <div className="min-h-screen overflow-hidden bg-[#070A0F] text-white">
+      <style>{`
+        @keyframes heroChartDraw {
+          0% { stroke-dashoffset: 1200; }
+          45%, 72% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: -1200; }
+        }
+        @keyframes heroChartGlow {
+          0%, 100% { opacity: 0.18; transform: scale(0.88); }
+          50% { opacity: 0.42; transform: scale(1.18); }
+        }
+        @keyframes heroScan {
+          0% { transform: translateX(-120%); opacity: 0; }
+          12% { opacity: 0.55; }
+          55% { opacity: 0.18; }
+          100% { transform: translateX(520%); opacity: 0; }
+        }
+        @keyframes heroPulseDot {
+          0%, 100% { opacity: 0.45; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.25); }
+        }
+        @keyframes heroFloatingDot {
+          0% { transform: translate3d(0, 0, 0); opacity: 0; }
+          12% { opacity: 0.9; }
+          50% { transform: translate3d(120px, -18px, 0); opacity: 0.7; }
+          100% { transform: translate3d(250px, 8px, 0); opacity: 0; }
+        }
+        @keyframes buttonParticleOne {
+          0% { transform: translate3d(-10px, 2px, 0) scale(0.55); opacity: 0; }
+          15% { opacity: 0.85; }
+          50% { transform: translate3d(55px, -1px, 0) scale(1); opacity: 0.9; }
+          100% { transform: translate3d(125px, 3px, 0) scale(0.45); opacity: 0; }
+        }
+        @keyframes buttonParticleTwo {
+          0% { transform: translate3d(35px, 9px, 0) scale(0.45); opacity: 0; }
+          20% { opacity: 0.65; }
+          55% { transform: translate3d(105px, -4px, 0) scale(0.9); opacity: 0.95; }
+          100% { transform: translate3d(170px, 5px, 0) scale(0.4); opacity: 0; }
+        }
+        @keyframes buttonParticleThree {
+          0% { transform: translate3d(95px, -4px, 0) scale(0.4); opacity: 0; }
+          25% { opacity: 0.75; }
+          60% { transform: translate3d(145px, 8px, 0) scale(1); opacity: 0.7; }
+          100% { transform: translate3d(215px, -2px, 0) scale(0.35); opacity: 0; }
+        }
+        .hero-chart-line {
+          stroke-dasharray: 1200;
+          stroke-dashoffset: 1200;
+          animation: heroChartDraw 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
+        .hero-chart-area {
+          transform-origin: center;
+          animation: heroChartGlow 3.8s ease-in-out infinite;
+        }
+        .hero-chart-scan { animation: heroScan 4.5s linear infinite; }
+        .hero-chart-dot {
+          animation: heroPulseDot 1.8s ease-in-out infinite;
+          transform-box: fill-box;
+          transform-origin: center;
+        }
+        .hero-floating-dot { animation: heroFloatingDot 5s linear infinite; }
+        .button-particle-one,
+        .button-particle-two,
+        .button-particle-three,
+        .button-particle-four {
+          opacity: 0;
+          animation-play-state: paused;
+        }
+
+        .group:hover .button-particle-one {
+          animation: buttonParticleOne 2.8s linear infinite;
+        }
+        .group:hover .button-particle-two {
+          animation: buttonParticleTwo 3.3s linear infinite 0.25s;
+        }
+        .group:hover .button-particle-three {
+          animation: buttonParticleThree 3s linear infinite 0.55s;
+        }
+        .group:hover .button-particle-four {
+          animation: buttonParticleFour 3.6s linear infinite 0.8s;
+        }
+
+        @keyframes buttonParticleFour {
+          0% {
+            transform: translate3d(18px, 18px, 0) scale(0.45);
+            opacity: 0;
+          }
+          18% { opacity: 0.7; }
+          50% {
+            transform: translate3d(105px, 17px, 0) scale(0.95);
+            opacity: 0.95;
+          }
+          100% {
+            transform: translate3d(190px, 19px, 0) scale(0.35);
+            opacity: 0;
+          }
+        }
+        @keyframes heroAuroraDrift {
+          0%, 100% {
+            transform: translate3d(-4%, -2%, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(5%, 4%, 0) scale(1.08);
+          }
+        }
+
+        @keyframes heroAuroraDriftReverse {
+          0%, 100% {
+            transform: translate3d(5%, 3%, 0) scale(1.05);
+          }
+          50% {
+            transform: translate3d(-6%, -4%, 0) scale(0.96);
+          }
+        }
+
+        @keyframes heroGridFlow {
+          0% { background-position: 0 0, 0 0; }
+          100% { background-position: 72px 72px, -72px 72px; }
+        }
+
+        @keyframes heroOrbitSpin {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes heroOrbitSpinReverse {
+          from { transform: translate(-50%, -50%) rotate(360deg); }
+          to { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+
+        @keyframes heroParticleFloat {
+          0%, 100% {
+            transform: translate3d(0, 12px, 0) scale(0.75);
+            opacity: 0;
+          }
+          14% { opacity: 0.55; }
+          50% {
+            transform: translate3d(24px, -24px, 0) scale(1);
+            opacity: 0.9;
+          }
+          86% { opacity: 0.45; }
+        }
+
+        @keyframes heroDataPulse {
+          0%, 100% { opacity: 0.12; transform: scaleX(0.92); }
+          50% { opacity: 0.45; transform: scaleX(1); }
+        }
+
+        @keyframes heroSignalTravel {
+          0% {
+            transform: translate3d(-20px, 0, 0);
+            opacity: 0;
+          }
+          12% { opacity: 0.55; }
+          48% { opacity: 0.25; }
+          100% {
+            transform: translate3d(120px, 0, 0);
+            opacity: 0;
+          }
+        }
+
+        @keyframes heroStarTwinkle {
+          0%, 100% { opacity: 0.12; }
+          50% { opacity: 0.72; }
+        }
+
+        .hero-ambient-grid {
+          animation: heroGridFlow 18s linear infinite;
+        }
+
+        .hero-aurora-one {
+          animation: heroAuroraDrift 14s ease-in-out infinite;
+        }
+
+        .hero-aurora-two {
+          animation: heroAuroraDriftReverse 18s ease-in-out infinite;
+        }
+
+        .hero-orbit-one {
+          animation: heroOrbitSpin 26s linear infinite;
+        }
+
+        .hero-orbit-two {
+          animation: heroOrbitSpinReverse 34s linear infinite;
+        }
+
+        .hero-orbit-three {
+          animation: heroOrbitSpin 42s linear infinite;
+        }
+
+        .hero-bg-particle {
+          animation: heroParticleFloat var(--particle-duration) ease-in-out infinite;
+          animation-delay: var(--particle-delay);
+        }
+
+        .hero-data-pulse {
+          animation: heroDataPulse 4s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        .hero-signal {
+          animation: heroSignalTravel 5s linear infinite;
+        }
+
+        .hero-star {
+          animation: heroStarTwinkle 3.8s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-chart-line, .hero-chart-area, .hero-chart-scan, .hero-chart-dot,
+          .hero-floating-dot, .button-particle-one, .button-particle-two,
+          .button-particle-three, .button-particle-four, .hero-ambient-grid,
+          .hero-aurora-one, .hero-aurora-two, .hero-orbit-one, .hero-orbit-two,
+          .hero-orbit-three, .hero-bg-particle, .hero-data-pulse, .hero-signal,
+          .hero-star { animation: none !important; }
+        }
+      `}</style>
       {/* ================================================================
           HERO
       ================================================================= */}
-      <section className="relative flex min-h-screen items-center pt-28">
-        {/* Background glow */}
+      <section className="relative isolate flex min-h-screen items-center overflow-hidden pt-28">
+        {/* Hero-only ambient market atmosphere. It sits behind every existing hero element. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        >
+          {/* Slow cyan/violet aurora fields */}
+          <div className="hero-aurora-one absolute left-[4%] top-[-18%] h-[72%] w-[58%] rounded-full bg-cyan-400/[0.07] blur-[110px]" />
+          <div className="hero-aurora-two absolute right-[-10%] top-[18%] h-[68%] w-[55%] rounded-full bg-violet-500/[0.065] blur-[120px]" />
+          <div className="hero-aurora-one absolute bottom-[-30%] left-[28%] h-[55%] w-[45%] rounded-full bg-cyan-300/[0.035] blur-[120px]" />
+
+          {/* Moving technical grid */}
+          <div
+            className="hero-ambient-grid absolute inset-[-90px] opacity-[0.18]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(98,230,255,0.065) 1px, transparent 1px), linear-gradient(90deg, rgba(139,124,255,0.045) 1px, transparent 1px)",
+              backgroundSize: "72px 72px",
+              maskImage:
+                "radial-gradient(ellipse 78% 68% at 50% 42%, black 0%, rgba(0,0,0,0.72) 42%, transparent 82%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 78% 68% at 50% 42%, black 0%, rgba(0,0,0,0.72) 42%, transparent 82%)",
+            }}
+          />
+
+          {/* Large orbital rings create a subtle market-network focal point */}
+          <div className="hero-orbit-one absolute left-[64%] top-[42%] h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.055]" />
+          <div className="hero-orbit-two absolute left-[64%] top-[42%] h-[590px] w-[590px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-300/[0.06] [transform:translate(-50%,-50%)_rotate(18deg)]" />
+          <div className="hero-orbit-three absolute left-[64%] top-[42%] h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.04] [transform:translate(-50%,-50%)_rotate(-22deg)]" />
+
+          {/* Tiny orbital ticks */}
+          <span className="hero-star absolute left-[64%] top-[7%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_14px_rgba(98,230,255,0.8)]" />
+          <span className="hero-star absolute left-[86%] top-[42%] h-1.5 w-1.5 rounded-full bg-violet-200 shadow-[0_0_16px_rgba(139,124,255,0.8)]" style={{ animationDelay: "1.1s" }} />
+          <span className="hero-star absolute left-[42%] top-[62%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(98,230,255,0.75)]" style={{ animationDelay: "2.2s" }} />
+
+          {/* Floating market particles */}
+          {heroBackgroundParticles.map((particle, index) => (
+            <span
+              key={`hero-particle-${index}`}
+              className={`hero-bg-particle absolute rounded-full ${
+                particle.color === "cyan"
+                  ? "bg-cyan-200 shadow-[0_0_12px_rgba(98,230,255,0.85)]"
+                  : "bg-violet-200 shadow-[0_0_12px_rgba(139,124,255,0.8)]"
+              }`}
+              style={{
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                "--particle-delay": particle.delay,
+                "--particle-duration": particle.duration,
+              } as React.CSSProperties}
+            />
+          ))}
+
+          {/* Subtle flowing data traces */}
+          <div className="absolute left-[8%] top-[31%] h-px w-[180px] overflow-hidden bg-cyan-300/[0.07]">
+            <span className="hero-signal block h-full w-16 bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+          </div>
+          <div className="absolute right-[8%] top-[64%] h-px w-[220px] overflow-hidden bg-violet-300/[0.06]">
+            <span
+              className="hero-signal block h-full w-20 bg-gradient-to-r from-transparent via-violet-300/45 to-transparent"
+              style={{ animationDelay: "1.7s" }}
+            />
+          </div>
+
+          {/* Market telemetry marks */}
+          <div className="absolute left-[6%] top-[46%] hidden w-28 space-y-2 opacity-50 lg:block">
+            <div className="hero-data-pulse h-px w-full bg-gradient-to-r from-cyan-300/0 via-cyan-300/30 to-cyan-300/0" />
+            <div className="hero-data-pulse h-px w-3/4 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent" style={{ animationDelay: "1.2s" }} />
+            <div className="hero-data-pulse h-px w-1/2 bg-gradient-to-r from-transparent via-violet-300/25 to-transparent" style={{ animationDelay: "2.4s" }} />
+          </div>
+
+          <div className="absolute right-[5%] top-[23%] hidden w-32 space-y-2 opacity-40 lg:block">
+            <div className="flex gap-1">
+              <span className="h-1 w-1 rounded-full bg-cyan-300" />
+              <span className="h-1 w-6 rounded-full bg-cyan-300/20" />
+              <span className="h-1 w-3 rounded-full bg-cyan-300/30" />
+              <span className="h-1 w-8 rounded-full bg-violet-300/20" />
+            </div>
+            <div className="flex gap-1">
+              <span className="h-1 w-3 rounded-full bg-violet-300/20" />
+              <span className="h-1 w-8 rounded-full bg-cyan-300/25" />
+              <span className="h-1 w-5 rounded-full bg-cyan-300/15" />
+            </div>
+          </div>
+
+          {/* Dark vignette keeps the animated layer atmospheric rather than distracting. */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,10,15,0.14)_55%,rgba(7,10,15,0.82)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#070A0F] to-transparent" />
+        </div>
+
+        {/* Existing background glow */}
         <div
           aria-hidden="true"
           className="
@@ -235,6 +605,7 @@ export default function Home() {
                   href="/dashboard"
                   className="
                     group
+                    relative
                     inline-flex
                     items-center
                     justify-center
@@ -256,14 +627,29 @@ export default function Home() {
                     hover:shadow-[0_0_40px_rgba(98,230,255,0.12)]
                   "
                 >
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl"
+                  >
+                    <span className="button-particle-one absolute left-0 top-1/2 h-1.5 w-1.5 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(98,230,255,0.95)]" />
+                    <span className="button-particle-two absolute left-0 top-1/2 h-1 w-1 rounded-full bg-violet-300 shadow-[0_0_10px_rgba(139,124,255,0.9)]" />
+                    <span className="button-particle-three absolute left-0 top-1/2 h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(98,230,255,0.9)]" />
+                    <span className="button-particle-four absolute left-0 top-1/2 h-1 w-1 rounded-full bg-violet-200 shadow-[0_0_10px_rgba(139,124,255,0.9)]" />
+                  </span>
+
+                  <span className="relative z-10">
+                    Explore Dashboard
+                  </span>
                   Explore Dashboard
 
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
 
                 <Link
                   href="#markets"
                   className="
+                    group
+                    relative
                     inline-flex
                     items-center
                     justify-center
@@ -284,9 +670,22 @@ export default function Home() {
                     hover:text-white
                   "
                 >
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl"
+                  >
+                    <span className="button-particle-one absolute left-0 top-1/2 h-1.5 w-1.5 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(98,230,255,0.9)]" />
+                    <span className="button-particle-two absolute left-0 top-1/2 h-1 w-1 rounded-full bg-violet-300 shadow-[0_0_10px_rgba(139,124,255,0.85)]" />
+                    <span className="button-particle-three absolute left-0 top-1/2 h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(98,230,255,0.9)]" />
+                    <span className="button-particle-four absolute left-0 top-1/2 h-1 w-1 rounded-full bg-violet-200 shadow-[0_0_10px_rgba(139,124,255,0.9)]" />
+                  </span>
+
+                  <span className="relative z-10">
+                    Explore Markets
+                  </span>
                   Explore Markets
 
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="relative z-10 h-4 w-4" />
                 </Link>
               </div>
 
@@ -378,7 +777,14 @@ export default function Home() {
                   </div>
 
                   {/* Chart */}
-                  <div className="relative mt-8 h-56 overflow-hidden rounded-2xl border border-white/[0.05] bg-[#080D14]">
+                  <div
+                    className="relative mt-8 h-56 overflow-hidden rounded-2xl border border-white/[0.05] bg-[#080D14]"
+                    onMouseMove={handleHeroChartMove}
+                    onMouseEnter={handleHeroChartMove}
+                    onMouseLeave={() => setActiveChartIndex(null)}
+                    role="img"
+                    aria-label="Interactive simulated XAU/USD market chart"
+                  >
                     <div
                       className="
                         absolute
@@ -395,65 +801,164 @@ export default function Home() {
                       aria-hidden="true"
                     >
                       <defs>
-                        <linearGradient
-                          id="heroChart"
-                          x1="0"
-                          y1="0"
-                          x2="1"
-                          y2="0"
-                        >
-                          <stop offset="0%" stopColor="#62E6FF" />
+                        <linearGradient id="heroChart" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stopColor="#22D3EE" />
+                          <stop offset="58%" stopColor="#62E6FF" />
                           <stop offset="100%" stopColor="#8B7CFF" />
                         </linearGradient>
 
-                        <linearGradient
-                          id="heroArea"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                        >
-                          <stop
-                            offset="0%"
-                            stopColor="#62E6FF"
-                            stopOpacity="0.18"
-                          />
-                          <stop
-                            offset="100%"
-                            stopColor="#62E6FF"
-                            stopOpacity="0"
-                          />
+                        <linearGradient id="heroArea" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#62E6FF" stopOpacity="0.22" />
+                          <stop offset="62%" stopColor="#62E6FF" stopOpacity="0.06" />
+                          <stop offset="100%" stopColor="#62E6FF" stopOpacity="0" />
                         </linearGradient>
+
+                        <linearGradient id="heroScanGradient" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stopColor="#62E6FF" stopOpacity="0" />
+                          <stop offset="50%" stopColor="#62E6FF" stopOpacity="0.55" />
+                          <stop offset="100%" stopColor="#8B7CFF" stopOpacity="0" />
+                        </linearGradient>
+
+                        <filter id="heroChartBlur">
+                          <feGaussianBlur stdDeviation="7" />
+                        </filter>
                       </defs>
 
                       <path
-                        d="M0 178 C30 170 35 151 65 158 C95 166 98 130 128 138 C158 146 170 110 198 120 C226 130 235 95 265 105 C295 115 312 85 342 92 C372 100 385 72 415 81 C445 90 460 48 490 59 C520 70 540 35 570 43 C582 46 592 38 600 30 L600 220 L0 220 Z"
+                        d={`${heroChartPath} L600 220 L0 220 Z`}
                         fill="url(#heroArea)"
+                        className="hero-chart-area"
                       />
 
                       <path
-                        d="M0 178 C30 170 35 151 65 158 C95 166 98 130 128 138 C158 146 170 110 198 120 C226 130 235 95 265 105 C295 115 312 85 342 92 C372 100 385 72 415 81 C445 90 460 48 490 59 C520 70 540 35 570 43 C582 46 592 38 600 30"
+                        d={heroChartPath}
                         fill="none"
-                        stroke="url(#heroChart)"
-                        strokeWidth="3"
+                        stroke="#62E6FF"
+                        strokeWidth="11"
                         strokeLinecap="round"
+                        opacity="0.13"
+                        filter="url(#heroChartBlur)"
                       />
 
+                      <path
+                        className="hero-chart-line"
+                        d={heroChartPath}
+                        fill="none"
+                        stroke="url(#heroChart)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+
+                      <rect
+                        className="hero-chart-scan"
+                        x="0"
+                        y="0"
+                        width="115"
+                        height="220"
+                        fill="url(#heroScanGradient)"
+                        opacity="0.24"
+                      />
+
+                      <circle className="hero-floating-dot" cx="75" cy="85" r="1.8" fill="#62E6FF" />
                       <circle
-                        cx="570"
-                        cy="43"
+                        className="hero-floating-dot"
+                        cx="170"
+                        cy="55"
+                        r="1.5"
+                        fill="#8B7CFF"
+                        style={{ animationDelay: "1.6s" }}
+                      />
+                      <circle
+                        className="hero-floating-dot"
+                        cx="300"
+                        cy="72"
+                        r="1.7"
+                        fill="#62E6FF"
+                        style={{ animationDelay: "3s" }}
+                      />
+
+                      {activeChartPoint && (
+                        <>
+                          <line
+                            x1={activeChartPoint.x}
+                            x2={activeChartPoint.x}
+                            y1="18"
+                            y2="198"
+                            stroke="#62E6FF"
+                            strokeWidth="1"
+                            strokeDasharray="3 5"
+                            opacity="0.65"
+                          />
+                          <line
+                            x1="0"
+                            x2={activeChartPoint.x}
+                            y1={activeChartPoint.y}
+                            y2={activeChartPoint.y}
+                            stroke="#62E6FF"
+                            strokeWidth="1"
+                            strokeDasharray="2 5"
+                            opacity="0.18"
+                          />
+                          <circle
+                            cx={activeChartPoint.x}
+                            cy={activeChartPoint.y}
+                            r="8"
+                            fill="#62E6FF"
+                            opacity="0.13"
+                          />
+                          <circle
+                            cx={activeChartPoint.x}
+                            cy={activeChartPoint.y}
+                            r="4.5"
+                            fill="#080D14"
+                            stroke="#62E6FF"
+                            strokeWidth="2"
+                          />
+                        </>
+                      )}
+
+                      <circle
+                        className="hero-chart-dot"
+                        cx="600"
+                        cy="30"
                         r="5"
                         fill="#62E6FF"
                       />
-
+                      <circle cx="600" cy="30" r="13" fill="#62E6FF" opacity="0.08" />
                       <circle
-                        cx="570"
-                        cy="43"
-                        r="10"
-                        fill="#62E6FF"
-                        opacity="0.1"
+                        cx="600"
+                        cy="30"
+                        r="8"
+                        fill="none"
+                        stroke="#62E6FF"
+                        strokeWidth="1"
+                        opacity="0.25"
                       />
                     </svg>
+
+                    {activeChartPoint && (
+                      <div
+                        className="pointer-events-none absolute z-20 w-32 -translate-x-1/2 rounded-lg border border-cyan-300/15 bg-[#0A1018]/95 px-3 py-2 shadow-[0_12px_35px_rgba(0,0,0,0.45)] backdrop-blur-md"
+                        style={{
+                          left: `${(activeChartPoint.x / 600) * 100}%`,
+                          top: `${Math.max(8, (activeChartPoint.y / 220) * 100 - 20)}%`,
+                        }}
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="text-[8px] uppercase tracking-[0.16em] text-slate-600">
+                            XAU/USD
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(98,230,255,0.9)]" />
+                        </div>
+                        <p className="mt-1 text-xs font-semibold text-white">
+                          {activeChartPoint.value}
+                        </p>
+                        <p className="mt-0.5 text-[9px] font-semibold text-emerald-400">
+                          {activeChartPoint.change} today
+                        </p>
+                      </div>
+                    )}
 
                     <div className="absolute bottom-3 left-4 right-4 flex justify-between text-[9px] text-slate-700">
                       <span>09:00</span>
